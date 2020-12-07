@@ -30,12 +30,12 @@ impl MainMenu {
     }
 }
 
-struct SecondMenu {
+struct SubMenu {
     title: String,
     action: fn(),
 }
 
-impl MenuAction for SecondMenu {
+impl MenuAction for SubMenu {
     fn get_title(&self) -> String {
         String::from(&self.title)
     }
@@ -56,12 +56,12 @@ fn get_input() -> String {
 }
 
 fn main() {
-    let first_option = Box::new(SecondMenu {
+    let first_option = Box::new(SubMenu {
         title: "Указать пути до папки с \\\\wls$\\".to_string(),
         action:
         || write_in_file("core/path.cfg", "Введите путь: "),
     });
-    let second_option = Box::new(SecondMenu {
+    let second_option = Box::new(SubMenu {
         title: "Создать проект".to_string(),
         action:
         || create_project(),
